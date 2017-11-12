@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<style>
+		a {
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<a href="show.php">查看留言</a>
+	<hr>
+	<form action="add.php" method="post" name="form">
+		<p>
+			<label for="user">用户: <input type="text" id="user" name="user" size="10"></label>
+		</p>
+		<p>
+			<label for="title">标题: <input type="text" id="title" name="title"></label>
+		</p>
+		<p>
+			<label for="content">内容: <textarea name="content" id="content" cols="30" rows="10"></textarea></label>
+		</p>
+		<p>
+			<input type="submit" value="发布留言" name="submit">
+		</p>
+	</form>
+
+	<script>
+		window.onload = function () {
+
+			function checkForm() {
+				if (!form.user.value) {
+					alert("请填写用户名");
+					form.user.focus();
+
+					// return要写在最后
+					return false;
+				} else if (!form.title.value) {
+					alert("请填写标题");
+					form.title.focus();
+					return false;
+				} else if (!form.content.value) {
+					alert("请填写内容");
+					form.content.focus();
+					return false;
+				}
+			}
+
+			var sub = form.submit;
+			sub.onclick = checkForm;
+		}
+	</script>
+</body>
+</html>
